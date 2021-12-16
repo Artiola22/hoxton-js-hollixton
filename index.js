@@ -4,7 +4,8 @@ const state = {
     selectedFilter: 'Home',
     selectedItem: null,
     search: '',
-    modals: ''
+    modals: '',
+    Forms: ''
 }
 
 function searchModal() {
@@ -155,16 +156,13 @@ function renderHeader() {
 
 
 
-
-    const loginLi = document.createElement("li")
-    loginLi.setAttribute("class", "right-user-li")
-
-    const loginButton = document.createElement("button")
-    loginButton.setAttribute("class", "login-button")
     const imageLoginButton = document.createElement("img")
     imageLoginButton.setAttribute("src", "./assets/account.png")
-    loginButton.append(imageLoginButton)
-    loginLi.append(loginButton)
+    imageLoginButton.addEventListener("click", function () {
+        render()
+        renderForms()
+    })
+
 
 
     const cartLi = document.createElement("li")
@@ -178,10 +176,76 @@ function renderHeader() {
     cartButton.append(imageCartButton)
     cartLi.append(cartButton)
 
-    rightUlEl.append(searchLoop, loginLi, cartLi)
+    const loginLi = document.createElement("li")
+    loginLi.setAttribute("class", "right-user-li")
+
+    const loginButton = document.createElement("button")
+    loginButton.setAttribute("class", "login-button")
+
+    loginButton.append(imageLoginButton)
+    loginLi.append(loginButton)
+    rightUlEl.append(loginLi)
+    rightUlEl.append(searchLoop, cartLi)
     rightSectionBar.append(rightUlEl)
     headerEl.append(h1El, headerNavLeft, rightSectionBar)
     document.body.append(headerEl)
+
+
+
+}
+
+//Creating login form
+function renderForms() {
+    const divWrapper = document.createElement("div")
+    divWrapper.setAttribute("class", "modal-wrapper")
+    const divForm = document.createElement("div")
+    divForm.setAttribute("class", "signup-box")
+
+    const signinEl = document.createElement("h1")
+    signinEl.setAttribute("class", "signin-el")
+    signinEl.textContent = "Sign In"
+
+
+    const formEl = document.createElement("form")
+    formEl.setAttribute("class", "form-el")
+
+    const labelEmailEl = document.createElement("label")
+    labelEmailEl.textContent = "Email"
+    labelEmailEl.setAttribute("for", "user-email")
+
+    const emailInputEl = document.createElement("input")
+    emailInputEl.setAttribute("type", "email")
+    emailInputEl.setAttribute("id", "user-email")
+
+
+    const labelPasswordEl = document.createElement("label")
+    labelPasswordEl.textContent = "Password"
+    labelPasswordEl.setAttribute("for", "user-password")
+
+    const inputPasswordEl = document.createElement("input")
+    inputPasswordEl.setAttribute("type", "password")
+    inputPasswordEl.setAttribute("id", "user-password")
+
+    const formButtonEl = document.createElement("button")
+    formButtonEl.setAttribute("class", "signin-button")
+    formButtonEl.setAttribute("type", "submit")
+    formButtonEl.textContent = "Sign In"
+
+    const closeButtonFormEl = document.createElement("button")
+    closeButtonFormEl.setAttribute("class", "form__close-btn")
+    closeButtonFormEl.textContent = "x"
+    closeButtonFormEl.addEventListener("click", function () {
+        state.modals = ""
+        render()
+    })
+
+
+    formEl.append(labelEmailEl, emailInputEl, labelPasswordEl, inputPasswordEl, formButtonEl, closeButtonFormEl)
+    divForm.append(signinEl, formEl)
+    divWrapper.append(divForm)
+    document.body.append(divWrapper)
+
+
 
 
 
@@ -308,6 +372,8 @@ function render() {
     renderMain()
     renderFooter()
     renderModals()
+
+
 }
 
 function init() {

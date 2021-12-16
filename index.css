@@ -91,7 +91,73 @@ button{
     right: 0;
 
 }
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000030;
+    width: 100vw;
+    height: 100vh;
+    
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+}
 
+.signup-box{ 
+    
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2rem 3rem;
+  
+    position: relative;
+    width: 360px;
+height: 450px;
+
+}
+.signin-el{
+    color: rgb(78, 78, 172);
+}
+.form-el{
+    width: 120px;
+    margin-left: 20px;
+    
+}
+
+.form-el label{
+    display: flex;
+    color:rgb(78, 78, 172) ;
+    margin-top: 40px;
+    font-size: 18px;
+   border: none;
+  
+}
+.form-el input{
+    
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid rgb(78, 78, 172);
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.signin-button{
+    border: 1px solid rgb(84, 84, 194);
+    border-radius: 20px;
+    margin-top: 30px;
+    height: 40px;
+    width: 100px;
+    background: linear-gradient(to right, #2a2a7a 0%, #3c8294 95%);
+    color: white;
+}
+
+.form__close-btn{
+    position: absolute;
+    top: 0;
+right: 0;
+padding: 20px;
+}
 main {
     padding: 1rem;
 }
